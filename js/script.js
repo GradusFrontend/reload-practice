@@ -18,5 +18,11 @@ showFull.onclick = () => {
     reloadSlots(arr, slots)
 }
 
+let menuBtn = document.querySelector('#korzina')
+let menu = document.querySelector('.menu')
+menuBtn.onclick = () => {
+    menu.classList.toggle('menu_active')
+} 
+
 
 

@@ -1,23 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reload Practice</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <div class="wrap">
-        <h1 class="h1">В корзине: <span id="in_pocket">0</span> товар</h1>
+        <h1 class="h1">В корзине: <span id="in_pocket">0</span> товар(ов)</h1>
         <div class="buttons">
             <button id="show_five">Показать первые 5</button>
             <button id="show_full">Показать все</button>
+            <button id="korzina">Корзина</button>
         </div>
     </div>
-    
-        <div class="slots"></div>
 
+    <div class="slots"></div>
+
+    <div class="menu">
+        <span id="cross">&#x2716;</span>
+        <h1 class="header-h1">Корзина</h1>
+        <div class="box">
+            <div class="products">
+                <div class="product">
+                    <div class="product-view">
+                        <div class="product-photo">
+                            <img class="product-img" src="./img/81fPKd-2AYL 1.png" alt="blya">
+                        </div>
+                        <h3 class="product-name">imya tovara tip</h3>
+                    </div>
+
+                    <div class="product-tools">
+                        <div class="counter">
+                            <span id="minus">&minus;</span>
+                            <span id="count">1</span>
+                            <span id="plus">&plus;</span>
+                        </div>
+                        <h3 id="product-price"><span>$</span>100.50</h3>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-view">
+                        <div class="product-photo">
+                            <img class="product-img" src="https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg" alt="blya">
+                        </div>
+                        <h3 class="product-name">imya tovara tip</h3>
+                    </div>
+
+                    <div class="product-tools">
+                        <div class="counter">
+                            <span id="minus">&minus;</span>
+                            <span id="count">1</span>
+                            <span id="plus">&plus;</span>
+                        </div>
+                        <h3 id="product-price"><span>$</span>100.50</h3>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-view">
+                        <div class="product-photo">
+                            <img class="product-img" src="./img/81fPKd-2AYL 1.png" alt="blya">
+                        </div>
+                        <h3 class="product-name">imya tovara tip</h3>
+                    </div>
+
+                    <div class="product-tools">
+                        <div class="counter">
+                            <span id="minus">&minus;</span>
+                            <span id="count">1</span>
+                            <span id="plus">&plus;</span>
+                        </div>
+                        <h3 id="product-price"><span>$</span>100.50</h3>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-view">
+                        <div class="product-photo">
+                            <img class="product-img" src="./img/81fPKd-2AYL 1.png" alt="blya">
+                        </div>
+                        <h3 class="product-name">imya tovara tip</h3>
+                    </div>
+
+                    <div class="product-tools">
+                        <div class="counter">
+                            <span id="minus">&minus;</span>
+                            <span id="count">1</span>
+                            <span id="plus">&plus;</span>
+                        </div>
+                        <h3 id="product-price"><span>$</span>100.50</h3>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-view">
+                        <div class="product-photo">
+                            <img class="product-img" src="https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg" alt="blya">
+                        </div>
+                        <h3 class="product-name">imya tovara tip</h3>
+                    </div>
+
+                    <div class="product-tools">
+                        <div class="counter">
+                            <span id="minus">&minus;</span>
+                            <span id="count">1</span>
+                            <span id="plus">&plus;</span>
+                        </div>
+                        <h3 id="product-price"><span>$</span>100.50</h3>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-view">
+                        <div class="product-photo">
+                            <img class="product-img" src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg" alt="blya">
+                        </div>
+                        <h3 class="product-name">imya tovara tip</h3>
+                    </div>
+
+                    <div class="product-tools">
+                        <div class="counter">
+                            <span id="minus">&minus;</span>
+                            <span id="count">1</span>
+                            <span id="plus">&plus;</span>
+                        </div>
+                        <h3 id="product-price"><span>$</span>100.50</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="count-price">
+                    <div class="all-count">
+                        <h2 class="all-count-h2">Всего товаров:</h2>
+                        <h2 class="all-count-number">2</h2>
+                    </div>
+
+                    <div class="all-price">
+                        <h2 class="all-price-h2">Общая цена:</h2>
+                        <h2 class="all-price-number"><span>$</span>500</h2>
+                    </div>
+                </div>
+
+                <button class="buy">Купить</button>
+            </div>
+        </div>
+
+    </div>
     <script type="module" src="./js/script.js"></script>
 </body>
+
 </html>
