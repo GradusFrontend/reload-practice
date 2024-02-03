@@ -154,13 +154,17 @@ export function reloadBasket(arr, place) {
             }
         }
 
-        // let allPrice = document.querySelector('.all-price-number')
-        // let prdPriceNum2 = prdPrice.innerText.split('$')
-        // // let allPriceNum += +prdPriceNum[prdPriceNum.length - 1]
-        // console.log(prdPriceNum2);
-        // allPrice.innerHTML = '$' + allPriceNum
     }
 
+    let allPrices = document.querySelectorAll('#product-price')
+    let allPricesNum = 0
+    allPrices.forEach(item => {
+        let numItem = item.innerText.split('$')
+        allPricesNum += +numItem[numItem.length - 1]
+    })
+    let allPriceView = document.querySelector('.all-price-number')
+    allPriceView.innerHTML = "$" + allPricesNum
+    
     let allCount = document.querySelector('.all-count-number')
     allCount.innerHTML = arr.length
 }
