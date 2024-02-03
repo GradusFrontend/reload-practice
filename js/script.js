@@ -2,7 +2,7 @@ import { arr } from "./db.js"
 import { reloadSlots } from "./ui.js"
 
 // a
-
+const body = document.body
 let slots = document.querySelector('.slots')
 reloadSlots(arr, slots)
 
@@ -20,8 +20,13 @@ showFull.onclick = () => {
 
 let menuBtn = document.querySelector('#korzina')
 let menu = document.querySelector('.menu')
+const closeMenu = document.querySelector('#cross')
+
 menuBtn.onclick = () => {
-    menu.classList.toggle('menu_active')
+    menu.classList.add('menu_active')
+} 
+closeMenu.onclick = () => {
+    menu.classList.remove('menu_active')
 } 
 
 

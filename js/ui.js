@@ -1,5 +1,6 @@
 
 
+let arrBasket = []
 export function reloadSlots(arr, place) {
     place.innerHTML = ''
     for (let item of arr) {
@@ -50,21 +51,116 @@ export function reloadSlots(arr, place) {
         starImg.src = './img/star.svg'
         pack.append(packImg, item.rating.count)
         packImg.src = './img/box.svg'
-        button.innerHTML = 'В избранное'
-
+        button.innerHTML = 'В корзину'
 
         button.onclick = () => {
             let numView = document.querySelector('#in_pocket')
             let num = +numView.innerText
-            if(!button.classList.contains('to-star_active')) {
+            if (!button.classList.contains('to-star_active')) {
                 button.innerHTML = 'Добавлено'
                 button.classList.add('to-star_active')
                 numView.innerHTML = num + 1
+                arrBasket.push(item)
+                reloadBasket(arrBasket, products)
             } else {
-                button.innerHTML = 'В избранное'
+                button.innerHTML = 'В корзину'
                 button.classList.remove('to-star_active')
                 numView.innerHTML = num - 1
+                arrBasket.splice(arrBasket.indexOf(item), 1)
+                reloadBasket(arrBasket, products)
             }
         }
     }
+}
+
+
+let products = document.querySelector('.products')
+export function reloadBasket(arr, place) {
+    place.innerHTML = ''
+    for (let item of arr) {
+        // a
+        let product = document.createElement('div')
+
+        let productView = document.createElement('div')
+        let productTools = document.createElement('div')
+
+        // Product View
+        let prdPhoto = document.createElement('div')
+        let prdImg = document.createElement('img')
+        let prdName = document.createElement('h3')
+
+        // Product Tools
+        let counter = document.createElement('div')
+        let minus = document.createElement('span')
+        let count = document.createElement('span')
+        let plus = document.createElement('span')
+
+        let prdPrice = document.createElement('h3')
+        
+        // b
+        product.classList.add('product')
+        productView.classList.add('product-view')
+        productTools.classList.add('product-tools')
+
+        // product view
+        prdPhoto.classList.add('product-photo')
+        prdImg.classList.add('product-img')
+        prdName.classList.add('product-name')
+
+        // Product Tools
+        counter.classList.add('counter')
+        minus.id = 'minus'
+        count.id = 'count'
+        plus.id = 'plus'
+
+        prdPrice.id = 'product-price'
+
+        // c
+        place.append(product)
+        product.append(productView, productTools)
+        productView.append(prdPhoto, prdName)
+        prdPhoto.append(prdImg)
+        
+        productTools.append(counter, prdPrice)
+        counter.append(minus, count, plus)
+
+        prdImg.src = item.image
+        prdImg.alt = 'product photo'
+        prdName.innerHTML = item.category
+
+        minus.innerHTML = "&minus;"
+        count.innerHTML = "1"
+        plus.innerHTML = "&plus;"
+
+        prdPrice.innerHTML = "$" + item.price
+
+
+        let countNum = 1
+        plus.onclick = () => {
+            if(countNum < 100) {
+                countNum++
+                count.innerHTML = countNum
+                let prdPriceNum = prdPrice.innerText.split('$')
+                prdPrice.innerHTML = '$' + (+prdPriceNum[prdPriceNum.length - 1] + item.price)
+                console.log(prdPriceNum);
+            }
+        }
+        minus.onclick = () => {
+            if(countNum > 1) {
+                countNum--
+                count.innerHTML = countNum
+                let prdPriceNum = prdPrice.innerText.split('$')
+                prdPrice.innerHTML = "$" + (+prdPriceNum[prdPriceNum.length - 1] - item.price)
+            }
+        }
+
+        // let allPrice = document.querySelector('.all-price-number')
+        // let prdPriceNum2 = prdPrice.innerText.split('$')
+        // // let allPriceNum += +prdPriceNum[prdPriceNum.length - 1]
+        // console.log(prdPriceNum2);
+        // allPrice.innerHTML = '$' + allPriceNum
+    }
+
+    let allCount = document.querySelector('.all-count-number')
+    allCount.innerHTML = arr.length
 }
