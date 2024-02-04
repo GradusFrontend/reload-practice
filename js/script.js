@@ -4,8 +4,8 @@ import { reloadSlots } from "./ui.js"
 // a
 const body = document.body
 let slots = document.querySelector('.slots')
-reloadSlots(arr, slots)
 
+reloadSlots(arr, slots)
 let showFive = document.querySelector('#show_five')
 let showFull = document.querySelector('#show_full')
 

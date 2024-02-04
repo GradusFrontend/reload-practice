@@ -1,5 +1,6 @@
+import { arr } from "./db.js"
 
-
+let slots = document.querySelector('.slots')
 let arrBasket = []
 export function reloadSlots(arr, place) {
     place.innerHTML = ''
@@ -53,6 +54,14 @@ export function reloadSlots(arr, place) {
         packImg.src = './img/box.svg'
         button.innerHTML = 'В корзину'
 
+        if (arrBasket.includes(item)) {
+            button.innerHTML = 'Добавлено'
+            button.classList.add('to-star_active')
+        }
+        let numView = document.querySelector('#in_pocket')
+        numView.innerHTML = arrBasket.length
+
+
         button.onclick = () => {
             let numView = document.querySelector('#in_pocket')
             let num = +numView.innerText
@@ -75,9 +84,9 @@ export function reloadSlots(arr, place) {
 
 
 let products = document.querySelector('.products')
-export function reloadBasket(arr, place) {
+export function reloadBasket(arr2, place) {
     place.innerHTML = ''
-    for (let item of arr) {
+    for (let item of arr2) {
         // a
         let product = document.createElement('div')
 
@@ -96,7 +105,7 @@ export function reloadBasket(arr, place) {
         let plus = document.createElement('span')
 
         let prdPrice = document.createElement('h3')
-        
+
         // b
         product.classList.add('product')
         productView.classList.add('product-view')
@@ -120,7 +129,7 @@ export function reloadBasket(arr, place) {
         product.append(productView, productTools)
         productView.append(prdPhoto, prdName)
         prdPhoto.append(prdImg)
-        
+
         productTools.append(counter, prdPrice)
         counter.append(minus, count, plus)
 
@@ -135,22 +144,35 @@ export function reloadBasket(arr, place) {
         prdPrice.innerHTML = "$" + item.price
 
 
+        // let allPriceView = document.querySelector('.all-price-number')
+        // let allPricesNum = 0
+        // let numItem = prdPrice.innerText.split('$')
+        // allPricesNum += +numItem[numItem.length - 1]
+        // allPriceView.innerHTML = "$" + allPricesNum
+
+
         let countNum = 1
         plus.onclick = () => {
-            if(countNum < 100) {
+            if (countNum < 100) {
                 countNum++
                 count.innerHTML = countNum
                 let prdPriceNum = prdPrice.innerText.split('$')
-                prdPrice.innerHTML = '$' + (+prdPriceNum[prdPriceNum.length - 1] + item.price)
-                console.log(prdPriceNum);
+                prdPrice.innerHTML = '$' + Math.round((+prdPriceNum[prdPriceNum.length - 1] + item.price))
             }
         }
+
         minus.onclick = () => {
-            if(countNum > 1) {
+            if (countNum > 0) {
                 countNum--
                 count.innerHTML = countNum
                 let prdPriceNum = prdPrice.innerText.split('$')
-                prdPrice.innerHTML = "$" + (+prdPriceNum[prdPriceNum.length - 1] - item.price)
+                prdPrice.innerHTML = "$" + Math.round((+prdPriceNum[prdPriceNum.length - 1] - item.price))
+            }
+
+            if (countNum === 0) {
+                arrBasket.splice(arrBasket.indexOf(item), 1)
+                product.remove()
+                reloadSlots(arr, slots)
             }
         }
 
@@ -164,7 +186,7 @@ export function reloadBasket(arr, place) {
     })
     let allPriceView = document.querySelector('.all-price-number')
     allPriceView.innerHTML = "$" + allPricesNum
-    
+
     let allCount = document.querySelector('.all-count-number')
-    allCount.innerHTML = arr.length
+    allCount.innerHTML = arr2.length
 }
