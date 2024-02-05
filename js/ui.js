@@ -158,6 +158,14 @@ export function reloadBasket(arr2, place) {
                 count.innerHTML = countNum
                 let prdPriceNum = prdPrice.innerText.split('$')
                 prdPrice.innerHTML = '$' + Math.round((+prdPriceNum[prdPriceNum.length - 1] + item.price))
+                let allPricesNum = 0;
+                let allPrices = document.querySelectorAll('#product-price')
+                allPrices.forEach(item => {
+                    let numItem = item.innerText.split('$')
+                    allPricesNum += +numItem[numItem.length - 1]
+                });
+                allPriceView.innerHTML = "$" + allPricesNum;
+
             }
         }
 
@@ -167,6 +175,14 @@ export function reloadBasket(arr2, place) {
                 count.innerHTML = countNum
                 let prdPriceNum = prdPrice.innerText.split('$')
                 prdPrice.innerHTML = "$" + Math.round((+prdPriceNum[prdPriceNum.length - 1] - item.price))
+                let allPricesNum = 0;
+                let allPrices = document.querySelectorAll('#product-price')
+                allPrices.forEach(item => {
+                    let numItem = item.innerText.split('$')
+                    allPricesNum += +numItem[numItem.length - 1]
+                });
+                allPriceView.innerHTML = "$" + allPricesNum;
+
             }
 
             if (countNum === 0) {
